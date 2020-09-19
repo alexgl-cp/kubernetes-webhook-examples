@@ -17,7 +17,7 @@ spec:
     port: 443
     targetPort: 443
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -37,8 +37,8 @@ spec:
     spec:
       containers:
         - name: webhook
-          image: garethr/hook:latest
-          imagePullPolicy: IfNotPresent
+          image: hook:latest
+          imagePullPolicy: Never
           args:
             - "--bind=0.0.0.0:443"
             - "--certfile=/certs/tls.crt"
