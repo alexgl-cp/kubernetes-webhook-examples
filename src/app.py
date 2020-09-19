@@ -36,9 +36,7 @@ def mutate():
     modified_spec = copy.deepcopy(spec)
 
     try:
-        modified_spec["metadata"]["labels"]["example.com/new-label"] = str(
-            random.randint(1, 1000)
-        )
+        modified_spec["metadata"]["labels"]["owner"] = "NO OWNER!"
     except KeyError:
         pass
     patch = jsonpatch.JsonPatch.from_diff(spec, modified_spec)
